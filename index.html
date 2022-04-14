@@ -26,13 +26,13 @@
     <div class="card mt-4 px-1 pt-3 main-card">
         <div class="input-group input-group-sm input-group-lg m-auto search-input">
             <input type="text" class="form-control" placeholder="Search for recipe" aria-label="Search for recipe"
-                aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                aria-describedby="button-addon2" id="search-input">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
         </div>
-        <div class="container d-flex flex-wrap">
-            <div class="m-2 category-div">
+        <div class="container d-flex flex-wrap mb-3">
+            <div class="m-2 category-div w-100">
                 <p class=" mb-0 category">Diet</p>
-                <div class="container d-flex flex-wrap gap-1 justify-content-between">
+                <div class="container d-flex flex-wrap gap-1 p-2">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
@@ -71,9 +71,9 @@
                     </div>
                 </div>
             </div>
-            <div class="m-2 category-div">
+            <div class="m-2 category-div w-100">
                 <p class="mb-0 category">Allergies</p>
-                <div class="container d-flex flex-wrap gap-1 justify-content-between">
+                <div class="container d-flex flex-wrap gap-1">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
@@ -130,9 +130,9 @@
                     </div>
                 </div>
             </div>
-            <div class="m-2 category-div">
+            <div class="m-2 category-div w-100">
                 <p class="mb-0 category">Cuisine Type</p>
-                <div class="container d-flex flex-wrap gap-1 justify-content-between">
+                <div class="container d-flex flex-wrap gap-1">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
@@ -304,7 +304,10 @@
             </div>
         </div>
     </div>
-    <div id="edamam-badge" data-color="white" class="p-2 text-center"></div>
+    <div class="position-relative">
+        <div id="edamam-badge" data-color="white"
+            class="p-2 text-center position-absolute top-100 start-50 translate-middle"></div>
+    </div>
 </body>
 
 </html>
