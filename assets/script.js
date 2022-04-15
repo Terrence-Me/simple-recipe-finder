@@ -76,28 +76,28 @@ function getAPI(userInp) {
     dietCheckedRes != '' ||
     dietCheckedRes != undefined
   ) {
-    url += '&diet=' + dietCheckedRes;
+    url += '&diet=' + dietCheckedRes.join('&');
   }
   if (
     allergiescheckedRes != null ||
     allergiescheckedRes != '' ||
     allergiescheckedRes != undefined
   ) {
-    url += '&health=' + allergiescheckedRes;
+    url += '&health=' + allergiescheckedRes.join('&');
   }
   if (
     cuisineCheckedRes != null ||
     cuisineCheckedRes != '' ||
     cuisineCheckedRes != undefined
   ) {
-    url += '&cuisineType=' + cuisineCheckedRes;
+    url += '&cuisineType=' + cuisineCheckedRes.join('&cuisineType=');
   }
   if (
     mealCheckedRes != null ||
     mealCheckedRes != '' ||
     mealCheckedRes != undefined
   ) {
-    url += '&&mealType=' + mealCheckedRes;
+    url += '&mealType=' + mealCheckedRes.join('&mealType=');
   }
 
   console.log(url);
