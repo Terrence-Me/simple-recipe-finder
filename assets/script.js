@@ -4,6 +4,7 @@ const dietCheckboxes = document.getElementById('diet');
 const allergiesCheckboxes = document.getElementById('allergies');
 const cuisineCheckboxes = document.getElementById('cuisine-type');
 const mealCheckboxes = document.getElementById('meal-type');
+const mealCard = document.getElementById('meal-card');
 
 let dietCheckedRes = [];
 let allergiescheckedRes = [];
@@ -62,10 +63,10 @@ function searchInputHandler(e) {
     console.log(mealCheckedRes);
   });
 
-  getAPI(userInput);
+  consolidateUrl(userInput);
 }
 
-function getAPI(userInp) {
+function consolidateUrl(userInp) {
   if (!userInp) {
     return;
   }
@@ -101,6 +102,32 @@ function getAPI(userInp) {
   }
 
   console.log(url);
+  getUrl(url);
+}
+
+function getUrl(url) {
+  fetch(url)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      mealCard.innerHTML = data.hits
+        .map((item, index) => {
+          return ` <div class="card m-4 p-1 card-res">
+          <img src=${item.recipe.images.THUMBNAIL.url}
+              class="card-img-top" alt="">
+          <div class=" card-body card-body_title">
+              <h5 class="card-title card-title_name">${item.recipe.label}</h5>
+          </div>
+          <div class="card-body d-flex card-body_links">
+              <a href="recipe.html" class="card-link">Recipe Information</a>
+              
+          </div>
+      </div>`;
+        })
+        .join(' ');
+    });
 }
 
 searchBtn.addEventListener('click', searchInputHandler);
