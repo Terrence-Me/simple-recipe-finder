@@ -112,9 +112,15 @@ function getUrl(url) {
     })
     .then(function (data) {
       console.log(data);
-      mealCard.innerHTML = data.hits
-        .map((item, index) => {
-          return ` <div class="card m-4 p-1 card-res">
+      buildCards(data);
+    });
+}
+
+function buildCards(data) {
+  console.log(data);
+  mealCard.innerHTML = data.hits
+    .map((item, index) => {
+      return ` <div class="card m-4 p-1 card-res">
           <img src=${item.recipe.images.THUMBNAIL.url}
               class="card-img-top" alt="">
           <div class=" card-body card-body_title">
@@ -125,9 +131,9 @@ function getUrl(url) {
               
           </div>
       </div>`;
-        })
-        .join(' ');
-    });
+    })
+    .join(' ');
+  localStorage.setItem('currentSearch', JSON.stringify(data));
 }
 
 searchBtn.addEventListener('click', searchInputHandler);
