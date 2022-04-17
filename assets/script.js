@@ -5,6 +5,7 @@ const allergiesCheckboxes = document.getElementById('allergies');
 const cuisineCheckboxes = document.getElementById('cuisine-type');
 const mealCheckboxes = document.getElementById('meal-type');
 const mealCard = document.getElementById('meal-card');
+const mealCardLink = document.querySelector('.meal-card_link');
 
 let dietCheckedRes = [];
 let allergiescheckedRes = [];
@@ -136,4 +137,17 @@ function buildCards(data) {
   localStorage.setItem('currentSearch', JSON.stringify(data));
 }
 
+function clikedLinkHandler(e) {
+  if (e.target.tagName.toLowerCase() === 'a') {
+    let clickedRecipe =
+      e.target.parentElement.parentElement.children[1].textContent.trim();
+    console.log(clickedRecipe);
+    localStorage.setItem('clickedRecipe', JSON.stringify(clickedRecipe));
+  } else {
+    return;
+  }
+  console.log(e.target);
+}
+
+mealCardLink.addEventListener('click', clikedLinkHandler);
 searchBtn.addEventListener('click', searchInputHandler);
