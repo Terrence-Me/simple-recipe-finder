@@ -38,22 +38,15 @@ ingredients.innerHTML = ingredientsList
   .join(' ');
 
 let nutritionalVal = test1[0].recipe.totalNutrients;
+
 console.log(nutritionalVal);
+let nutritionLength = Object.keys(nutritionalVal).length;
+// console.log(nutritionLength);
 
-// for (let i=0; i<nutritionalVal.length; i++) {
-
-// }
 for (let val in nutritionalVal) {
-  let testVal = val;
-  console.log(val);
-  console.log(nutritionalVal[val].label);
-  let newVal = [];
-
-  newVal.push(testVal);
-  console.log(newVal);
-  // nutritionalFacts.innerHTML = `<li>${nutritionalVal[val].label} ${nutritionalVal[val].unit}</li>`;
+  let nutritionVal = document.createElement('li');
+  nutritionVal.innerText = `${nutritionalVal[val].label} ${nutritionalVal[
+    val
+  ].quantity.toFixed(1)} ${nutritionalVal[val].unit}`;
+  nutritionalFacts.append(nutritionVal);
 }
-
-// nutritionalFacts.innerHTML = nutritionalVal.map((item) => {
-//   return `<li>${item.label}${item.unit}</li>`;
-// });
