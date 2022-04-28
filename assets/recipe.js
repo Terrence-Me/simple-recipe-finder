@@ -47,10 +47,12 @@ let nutritionLength = Object.keys(nutritionalVal).length;
 // console.log(nutritionLength);
 
 for (let val in nutritionalVal) {
-  let nutritionVal = document.createElement('li');
-  nutritionVal.classList = 'fs-6 p-1 m-1 nutritionalVals';
-  nutritionVal.innerText = `${nutritionalVal[val].label}  ${
-    nutritionalVal[val].quantity.toFixed(0) / yield
-  }${nutritionalVal[val].unit}`;
-  nutritionalFacts.append(nutritionVal);
+  let nutritionValLi = document.createElement('li');
+  let nutritionMeasure = nutritionalVal[val].quantity / yield;
+
+  nutritionValLi.classList = 'fs-6 p-1 m-1 nutritionalVals';
+  nutritionValLi.innerText = `${
+    nutritionalVal[val].label
+  }  ${nutritionMeasure.toFixed(2)}${nutritionalVal[val].unit}`;
+  nutritionalFacts.append(nutritionValLi);
 }
