@@ -33,11 +33,14 @@ let ingredientsList = test1[0].recipe.ingredientLines;
 
 ingredients.innerHTML = ingredientsList
   .map((item) => {
-    return `<li>${item}</li>`;
+    return `<li class = "fs-6">${item}</li>`;
   })
   .join(' ');
 
 let nutritionalVal = test1[0].recipe.totalNutrients;
+let yield = test1[0].recipe.yield;
+
+console.log(test1[0].recipe.yield);
 
 console.log(nutritionalVal);
 let nutritionLength = Object.keys(nutritionalVal).length;
@@ -45,8 +48,9 @@ let nutritionLength = Object.keys(nutritionalVal).length;
 
 for (let val in nutritionalVal) {
   let nutritionVal = document.createElement('li');
-  nutritionVal.innerText = `${nutritionalVal[val].label} ${nutritionalVal[
-    val
-  ].quantity.toFixed(1)} ${nutritionalVal[val].unit}`;
+  nutritionVal.classList = 'fs-6 p-1 m-1 nutritionalVals';
+  nutritionVal.innerText = `${nutritionalVal[val].label}  ${
+    nutritionalVal[val].quantity.toFixed(0) / yield
+  }${nutritionalVal[val].unit}`;
   nutritionalFacts.append(nutritionVal);
 }
