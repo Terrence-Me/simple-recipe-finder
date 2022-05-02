@@ -21,7 +21,7 @@ let test1 = currentSearch.hits.filter(function (item, index) {
 console.log(test1);
 topSection.innerHTML = test1.map((item, index) => {
   return `<div>
-  <p class = "fs-3 fw-bold">${item.recipe.label}</p>
+  <p class = "fs-3 fw-bold m-0">${item.recipe.label}</p>
   </div>
   <div class="m-1">
   <img src=${item.recipe.images.REGULAR.url}
