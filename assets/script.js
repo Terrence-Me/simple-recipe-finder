@@ -6,19 +6,28 @@ const cuisineCheckboxes = document.getElementById('cuisine-type');
 const mealCheckboxes = document.getElementById('meal-type');
 const mealCard = document.getElementById('meal-card');
 const mealCardLink = document.querySelector('.meal-card_link');
+const searchError = document.querySelector('.search-error');
 
 let dietCheckedRes = [];
 let allergiescheckedRes = [];
 let cuisineCheckedRes = [];
 let mealCheckedRes = [];
 
+function init() {
+  if (localStorage.getItem('currentSearch') !== null) {
+    let currentSearch = JSON.parse(localStorage.getItem('currentSearch'));
+    buildCards(currentSearch);
+  }
+}
+
 function searchInputHandler(e) {
   e.preventDefault();
   let userInput = searchInput.value.trim();
   console.log(userInput);
 
-  if (!searchInput) {
+  if (!userInput) {
     console.log('input search location');
+    searchError.classList.toggle('visible');
     return;
   }
 
@@ -74,35 +83,38 @@ function consolidateUrl(userInp) {
   let url = `https://api.edamam.com/api/recipes/v2?type=public&beta=true&q=${userInp}&app_id=d09318a2&app_key=c4d5edd2551e343b96358250d0f75a0f`;
 
   if (
-    dietCheckedRes != null ||
-    dietCheckedRes != '' ||
+    dietCheckboxes > 0 &&
+    dietCheckedRes != null &&
+    dietCheckedRes != '' &&
     dietCheckedRes != undefined
   ) {
     url += '&diet=' + dietCheckedRes.join('&');
   }
   if (
-    allergiescheckedRes != null ||
-    allergiescheckedRes != '' ||
+    allergiescheckedRes > 0 &&
+    allergiescheckedRes != null &&
+    allergiescheckedRes != '' &&
     allergiescheckedRes != undefined
   ) {
     url += '&health=' + allergiescheckedRes.join('&');
   }
   if (
-    cuisineCheckedRes != null ||
-    cuisineCheckedRes != '' ||
+    cuisineCheckedRes > 0 &&
+    cuisineCheckedRes != null &&
+    cuisineCheckedRes != '' &&
     cuisineCheckedRes != undefined
   ) {
     url += '&cuisineType=' + cuisineCheckedRes.join('&cuisineType=');
   }
   if (
-    mealCheckedRes != null ||
-    mealCheckedRes != '' ||
+    mealCheckedRes > 0 &&
+    mealCheckedRes != null &&
+    mealCheckedRes != '' &&
     mealCheckedRes != undefined
   ) {
     url += '&mealType=' + mealCheckedRes.join('&mealType=');
   }
 
-  console.log(url);
   getUrl(url);
 }
 
@@ -112,7 +124,6 @@ function getUrl(url) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       buildCards(data);
     });
 }
@@ -125,7 +136,7 @@ function buildCards(data) {
           <img src=${item.recipe.images.THUMBNAIL.url}
               class="card-img-top" alt="">
           <div class=" card-body card-body_title">
-              <h5 class="card-title card-title_name">${item.recipe.label}</h5>
+              <h6 class="card-title card-title_name">${item.recipe.label}</h6>
           </div>
           <div class="card-body d-flex card-body_links">
               <a href="recipe.html" class="card-link">Recipe Information</a>
@@ -148,6 +159,9 @@ function clikedLinkHandler(e) {
   }
   console.log(e.target);
 }
-
+init();
 mealCardLink.addEventListener('click', clikedLinkHandler);
 searchBtn.addEventListener('click', searchInputHandler);
+window.onbeforeunload = () => {
+  localStorage.removeItem('currentSearch');
+};

@@ -6,6 +6,13 @@ body {
   background-color: rgb(253, 253, 253);
 }
 
+.search-error {
+  text-align: center;
+  margin-top: 0.5rem;
+  color: rgb(250, 134, 134);
+  visibility: hidden;
+}
+
 .category {
   font-size: 1rem;
 }
@@ -69,7 +76,7 @@ body {
 
   .card-title_name,
   .card-body_links {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .search-input {
@@ -82,6 +89,9 @@ body {
   .main-card {
     max-width: 900px;
     margin: auto;
+  }
+  .card-res {
+    width: 12rem;
   }
 
   .category {
