@@ -139,7 +139,8 @@ function buildCards(data) {
               <h6 class="card-title card-title_name">${item.recipe.label}</h6>
           </div>
           <div class="card-body d-flex card-body_links">
-              <a href="recipe.html" class="card-link">Recipe Information</a>
+              <a href="recipe.html" class="card-link btn btn-outline-primary btn-sm">Additional Information</a>
+              <a href= ${item.recipe.url} class="card-link btn btn-outline-primary btn-sm"> Cooking Instructions</a>
               
           </div>
       </div>`;

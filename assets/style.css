@@ -29,7 +29,8 @@ body {
 
 .card-title_name,
 .card-body_links {
-  font-size: 0.8rem;
+  font-size: 0.6rem;
+  flex-direction: column;
 }
 .card-body_title {
   padding: 0;
@@ -37,6 +38,10 @@ body {
 }
 .card-body_links {
   padding: 0;
+}
+.card-body_links a {
+  font-size: 0.6rem;
+  margin: 0.3rem 0 !important;
 }
 
 .card-res {
@@ -75,8 +80,8 @@ body {
   }
 
   .card-title_name,
-  .card-body_links {
-    font-size: 0.9rem;
+  .card-body_links a {
+    font-size: 0.8rem;
   }
 
   .search-input {
@@ -92,6 +97,14 @@ body {
   }
   .card-res {
     width: 12rem;
+  }
+
+  .card-body_links {
+    flex-direction: row;
+  }
+
+  .card-body_links a {
+    margin: 0.2rem !important;
   }
 
   .category {
