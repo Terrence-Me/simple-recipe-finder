@@ -163,6 +163,6 @@ function clikedLinkHandler(e) {
 init();
 mealCardLink.addEventListener('click', clikedLinkHandler);
 searchBtn.addEventListener('click', searchInputHandler);
-window.onbeforeunload = () => {
-  localStorage.removeItem('currentSearch');
-};
+// window.onbeforeunload = () => {
+//   localStorage.removeItem('currentSearch');
+// };

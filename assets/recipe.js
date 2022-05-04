@@ -53,6 +53,6 @@ for (let val in nutritionalVal) {
   nutritionalFacts.append(nutritionValLi);
 }
 
-window.onbeforeunload = () => {
-  localStorage.removeItem('clickedRecipe');
-};
+// window.onbeforeunload = () => {
+//   localStorage.removeItem('clickedRecipe');
+// };
