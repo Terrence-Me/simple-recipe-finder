@@ -1,6 +1,8 @@
 const topSection = document.getElementById('top-section');
 const ingredients = document.getElementById('ingredients');
 const nutritionalFacts = document.getElementById('nutritional-facts');
+const viewRecipe = document.querySelector('.viewRecipe');
+
 let currentSearch;
 let currentRecipe = JSON.parse(localStorage.getItem('clickedRecipe'));
 
@@ -26,12 +28,17 @@ topSection.innerHTML = searchedItem.map((item, index) => {
 });
 
 let ingredientsList = searchedItem[0].recipe.ingredientLines;
+let recipeLink = searchedItem[0].recipe.url;
+
+console.log(recipeLink);
 
 ingredients.innerHTML = ingredientsList
   .map((item) => {
     return `<li class = "fs-6">${item}</li>`;
   })
   .join(' ');
+
+viewRecipe.innerHTML = `<a href= ${recipeLink} class="card-link btn btn-outline-primary btn-sm"> Cooking Instructions</a>`;
 
 let nutritionalVal = searchedItem[0].recipe.totalNutrients;
 let yield = searchedItem[0].recipe.yield;
